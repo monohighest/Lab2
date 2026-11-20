@@ -15,7 +15,7 @@ def get_user_input():
     return float_list
 
 
-def calc_average(num_list):
+def calc_average_temperature(num_list):
     if len(num_list) == 0:
         return 0.0
 
@@ -23,7 +23,7 @@ def calc_average(num_list):
     return average
 
 
-def find_min_max(num_list):
+def calc_min_max_temperature(num_list):
     if len(num_list) == 0:
         return [0.0, 0.0]
 
@@ -60,10 +60,10 @@ def main():
 
     print("User input float list:", num_list)
 
-    average = calc_average(num_list)
+    average = calc_average_temperature(num_list)
     print("Average temperature:", average)
 
-    min_max = find_min_max(num_list)
+    min_max = calc_min_max_temperature(num_list)
     print("Minimum temperature:", min_max[0])
     print("Maximum temperature:", min_max[1])
 
