@@ -1,16 +1,41 @@
 import Lab2
 
-def test_find_min_max():
-    input_arr = [1, 2, 3, 4, 5]
-    result = Lab2.find_min_max(input_arr)
-    assert result == [1, 5]
+def test_calc_min_max_temperature():
+    print("Test_calc_min_max_temperature")
+    # Arrange
+    result = []
+    input_list = [5, 67, 32, 15, 89, 23, 41]
+    expected_result = [5, 89]
 
-def test_calc_average():
-    input_arr = [10, 20, 30]
-    result = Lab2.calc_average(input_arr)
-    assert result == 20.0
+    # Act
+    result = Lab2.calc_min_max_temperature(input_list)
+
+    # Assert
+    assert result == expected_result
+
+
+def test_calc_average_temperature():
+    # Arrange
+    result = 0
+    input_list = [10, 20, 30, 40, 50]
+    expected_result = 30.0
+
+    # Act
+    result = Lab2.calc_average_temperature(input_list)
+
+    # Assert
+    assert result == expected_result
+
 
 def test_calc_median_temperature():
-    input_arr = [10, 20, 30, 40]
-    result = Lab2.calc_median_temperature(input_arr)
-    assert result == 25.0
+    # Arrange
+    result = 0
+    # Test with odd number of elements
+    input_list = [5, 15, 25, 35, 45]
+    expected_result = 25
+
+    # Act
+    result = Lab2.calc_median_temperature(input_list)
+
+    # Assert
+    assert result == expected_result
