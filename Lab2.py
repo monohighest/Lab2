@@ -1,78 +1,81 @@
-
 def display_main_menu():
     print("Enter some numbers separated by commas (e.g. 5, 67, 32)")
 
-
 def get_user_input():
-    input_str = input()
+    # Read user input from console
+    user_input = input()
 
-    str_list = input_str.split(",")
+    # Split the string by commas into a list of strings
+    string_list = user_input.split(",")
 
+    # Convert list of strings to list of floats
     float_list = []
-    for item in str_list:
-        float_list.append(float(item.strip()))
+    for num_str in string_list:
+        float_list.append(float(num_str))
 
     return float_list
 
-
 def calc_average_temperature(num_list):
-    if len(num_list) == 0:
-        return 0.0
+    # Calculate sum of all numbers
+    total = sum(num_list)
 
-    average = sum(num_list) / len(num_list)
+    # Calculate average
+    average = total / len(num_list)
+
     return average
 
-
 def calc_min_max_temperature(num_list):
-    if len(num_list) == 0:
-        return [0.0, 0.0]
-
+    # Find minimum value
     minimum = min(num_list)
+
+    # Find maximum value
     maximum = max(num_list)
 
+    # Return as a list [min, max]
     return [minimum, maximum]
 
-
 def sort_temperature(num_list):
+    # Sort the list in ascending order
     sorted_list = sorted(num_list)
     return sorted_list
 
-
 def calc_median_temperature(num_list):
-    if len(num_list) == 0:
-        return 0.0
+    # First, sort the list
+    sorted_list = sort_temperature(num_list)
 
-    sorted_list = sorted(num_list)
-    n = len(sorted_list)
-    middle = n // 2
+    # Get the length of the list
+    length = len(sorted_list)
 
-    if n % 2 == 1:
-        return sorted_list[middle]
+    # Calculate median
+    if length % 2 == 0:
+        # Even number of elements: average of two middle values
+        mid1 = length // 2 - 1
+        mid2 = length // 2
+        median = (sorted_list[mid1] + sorted_list[mid2]) / 2
     else:
-        return (sorted_list[middle - 1] + sorted_list[middle]) / 2
+        # Odd number of elements: middle value
+        mid = length // 2
+        median = sorted_list[mid]
 
+    return median
 
 def main():
     print("ET0735 (DevOps for AIoT) - Lab 2 - Introduction to Python")
-
     display_main_menu()
     num_list = get_user_input()
 
-    print("User input float list:", num_list)
-
+    # Calculate and display average
     average = calc_average_temperature(num_list)
-    print("Average temperature:", average)
+    print("Average temperature: " + str(average))
 
+    # Calculate and display min and max
     min_max = calc_min_max_temperature(num_list)
-    print("Minimum temperature:", min_max[0])
-    print("Maximum temperature:", min_max[1])
+    print("Minimum temperature: " + str(min_max[0]))
+    print("Maximum temperature: " + str(min_max[1]))
 
-    sorted_list = sort_temperature(num_list)
-    print("Sorted temperatures:", sorted_list)
-
+    # Calculate and display median
     median = calc_median_temperature(num_list)
-    print("Median temperature:", median)
-
+    print("Median temperature: " + str(median))
 
 if __name__ == "__main__":
     main()
